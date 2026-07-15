@@ -27,7 +27,10 @@ namespace S26W9DbFirstApproach
 
         private void LoadStudents()
         {
-            var students = db.Students.ToList();
+            //var students = db.Students.ToList();
+            var students = (from s in db.Students
+                           select new { s.StudentId, s.StudentName, s.Standard!.StandardName }).ToList();
+
             grdStudents.ItemsSource = students;
         }
 
