@@ -116,5 +116,16 @@ namespace S26W9DbFirstApproach
 
             grdStudents.ItemsSource = students;
         }
+
+        private void cmbStandard_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            int stdId = (int)cmbStandard.SelectedValue;
+
+            var students = (from s in db.Students
+                           where s.StandardId == stdId
+                           select s).ToList();
+
+            grdStudents.ItemsSource = students;
+        }
     }
 }
